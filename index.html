@@ -1,8 +1,574 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <tittle>My website</tittle>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AYORA - Fashion Discovery Across Nepal</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #fffaf8;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 28px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            opacity: 0.6;
+        }
+
+        .hero {
+            min-height: 88vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 70px 20px;
+            background: linear-gradient(to right, #fbe9e7, #fff3e0);
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .tagline {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 14px;
+            margin-bottom: 18px;
+            color: #7b5e57;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            line-height: 1.1;
+            margin-bottom: 22px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            color: #555;
+            max-width: 720px;
+            margin: 0 auto 30px;
+        }
+
+        .search-box {
+            display: flex;
+            max-width: 680px;
+            margin: 30px auto 20px;
+            background: white;
+            padding: 8px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 15px;
+            font-size: 16px;
+        }
+
+        .search-box button {
+            border: none;
+            background: #222;
+            color: white;
+            padding: 14px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .hero-buttons {
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 14px 26px;
+            margin: 6px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .btn-dark {
+            background: #222;
+            color: white;
+        }
+
+        .btn-light {
+            border: 1px solid #222;
+            color: #222;
+            background: transparent;
+        }
+
+        .section {
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .section-description {
+            max-width: 760px;
+            margin: 0 auto 40px;
+            color: #666;
+            font-size: 17px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+            text-align: left;
+        }
+
+        .card-icon {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .occasion-section {
+            background: #f8efeb;
+        }
+
+        .occasion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 18px;
+            margin-top: 35px;
+        }
+
+        .occasion {
+            background: white;
+            padding: 30px 15px;
+            border-radius: 14px;
+            font-weight: bold;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+        }
+
+        .how-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .step {
+            padding: 25px;
+        }
+
+        .step-number {
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #8c665a;
+        }
+
+        .seller-section {
+            background: #222;
+            color: white;
+        }
+
+        .seller-section p {
+            color: #ddd;
+        }
+
+        .seller-section .btn {
+            background: white;
+            color: #222;
+        }
+
+        .future-card {
+            text-align: center;
+        }
+
+        .cta {
+            background: linear-gradient(to right, #f4d9d2, #fbe8cf);
+        }
+
+        footer {
+            background: #111;
+            color: white;
+            padding: 45px 8%;
+            text-align: center;
+        }
+
+        footer .footer-logo {
+            font-size: 28px;
+            letter-spacing: 3px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            color: #bbb;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+            }
+
+            nav {
+                margin-top: 12px;
+            }
+
+            nav a {
+                margin: 0 8px;
+                font-size: 13px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            .search-box button {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Welcome to my website</h1>
+
+<header>
+    <div class="logo">AYORA</div>
+
+    <nav>
+        <a href="#discover">Discover</a>
+        <a href="#occasion">Occasions</a>
+        <a href="#how">How It Works</a>
+        <a href="#sellers">For Sellers</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+
+        <div class="tagline">
+            Discover. Compare. Wear.
+        </div>
+
+        <h1>Find Fashion That Fits You.</h1>
+
+        <p>
+            Discover fashion from online stores across Nepal in one place.
+            Search by your budget, size, style, color, festival, or occasion
+            and compare options without browsing store after store.
+        </p>
+
+        <div class="search-box">
+            <input
+                type="text"
+                placeholder="Try: Dashain outfit under Rs. 5,000"
+            >
+            <button>Search</button>
+        </div>
+
+        <div class="hero-buttons">
+            <a href="#discover" class="btn btn-dark">
+                Discover Fashion
+            </a>
+
+            <a href="#occasion" class="btn btn-light">
+                Explore Occasions
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="section" id="discover">
+
+    <h2>Fashion Discovery Made Simple</h2>
+
+    <p class="section-description">
+        AYORA brings fashion from different Nepali online stores into one
+        place so you can spend less time searching and more time finding
+        something that matches your style.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-icon">💰</div>
+
+            <h3>Shop Your Budget</h3>
+
+            <p>
+                Enter how much you want to spend and discover clothing
+                options that fit within your budget.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🎨</div>
+
+            <h3>Search Your Way</h3>
+
+            <p>
+                Filter fashion by size, color, style, gender,
+                category, and price.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">✨</div>
+
+            <h3>Dress for the Occasion</h3>
+
+            <p>
+                Find fashion for festivals, weddings, parties,
+                college, work, and everyday occasions.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">⇄</div>
+
+            <h3>Compare Your Options</h3>
+
+            <p>
+                Discover similar items from different Nepali sellers
+                and compare prices and styles before choosing.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section occasion-section" id="occasion">
+
+    <h2>What Are You Dressing For?</h2>
+
+    <p class="section-description">
+        Start with the occasion and let AYORA help you discover
+        styles that match the moment.
+    </p>
+
+    <div class="occasion-grid">
+
+        <div class="occasion">Dashain</div>
+        <div class="occasion">Tihar</div>
+        <div class="occasion">Teej</div>
+        <div class="occasion">Wedding</div>
+        <div class="occasion">Party</div>
+        <div class="occasion">College</div>
+        <div class="occasion">Office</div>
+
+    </div>
+
+</section>
+
+
+<section class="section" id="how">
+
+    <h2>How AYORA Works</h2>
+
+    <p class="section-description">
+        Your next outfit is only a few steps away.
+    </p>
+
+    <div class="how-grid">
+
+        <div class="step">
+
+            <div class="step-number">01</div>
+
+            <h3>Search</h3>
+
+            <p>
+                Enter what you want, choose an occasion,
+                or set your budget.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <div class="step-number">02</div>
+
+            <h3>Discover</h3>
+
+            <p>
+                Browse matching fashion products from different
+                online stores across Nepal.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <div class="step-number">03</div>
+
+            <h3>Compare & Choose</h3>
+
+            <p>
+                Compare prices, styles, colors, and sellers
+                to find the right option for you.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section seller-section" id="sellers">
+
+    <h2>More Visibility for Nepali Fashion Businesses</h2>
+
+    <p class="section-description">
+        AYORA also helps local and growing online fashion businesses
+        reach customers who are actively searching for products like theirs.
+    </p>
+
+    <a href="#" class="btn">
+        Join as a Seller
+    </a>
+
+</section>
+
+
+<section class="section">
+
+    <h2>Coming to AYORA</h2>
+
+    <p class="section-description">
+        Future features will make fashion discovery even more personal.
+    </p>
+
+    <div class="cards">
+
+        <div class="card future-card">
+            <div class="card-icon">🤍</div>
+
+            <h3>Personalized Picks</h3>
+
+            <p>
+                Get recommendations based on your preferences,
+                search history, budget, and style.
+            </p>
+        </div>
+
+        <div class="card future-card">
+            <div class="card-icon">📷</div>
+
+            <h3>Image Search</h3>
+
+            <p>
+                Upload a picture of an outfit you like and find
+                similar fashion products available in Nepal.
+            </p>
+        </div>
+
+        <div class="card future-card">
+            <div class="card-icon">👗</div>
+
+            <h3>Complete Looks</h3>
+
+            <p>
+                Enter your total budget and receive complete outfit
+                suggestions that stay within your price range.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section cta">
+
+    <h2>Stop Searching Everywhere. Start Finding.</h2>
+
+    <p class="section-description">
+        From everyday outfits to your next festival look,
+        discover more of Nepal's online fashion in one place.
+    </p>
+
+    <a href="#discover" class="btn btn-dark">
+        Discover with AYORA
+    </a>
+
+</section>
+
+
+<footer>
+
+    <div class="footer-logo">
+        AYORA
+    </div>
+
+    <p>
+        Discover. Compare. Wear.
+    </p>
+
+    <p style="margin-top: 12px;">
+        Fashion discovery across Nepal.
+    </p>
+
+    <p style="margin-top: 20px;">
+        © 2026 AYORA. All rights reserved.
+    </p>
+
+</footer>
+
 </body>
 </html>
