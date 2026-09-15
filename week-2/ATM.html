@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Simple ATM</title>
+</head>
+
+<body>
+
+    <h2>Welcome to ATM</h2>
+
+    <p>Please enter your PIN</p>
+
+    <input type="password" id="userPin">
+    <button onclick="verifyPin()">Verify</button>
+
+    <p>Enter Transaction Amount</p>
+
+    <input type="number" id="transactionAmount">
+
+    <br><br>
+
+    <button onclick="showBalance()">Balance</button>
+    <button onclick="withdrawCash()">Withdraw Cash</button>
+    <button onclick="depositCash()">Deposit Cash</button>
+
+    <h3 id="output"></h3>
+
+    <script src="atm2.js"></script>
+
+</body>
+</html>

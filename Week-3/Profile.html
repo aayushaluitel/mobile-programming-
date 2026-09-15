@@ -1,102 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Aayusha Profile Card</title>
+    <meta charset="UTF-8">
+    <title>Aayusha Profile</title>
 
-    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-    <!-- QR Code -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
     <style>
 
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f7fb;
+            background-color: #eeeaf7;
         }
 
-        .card {
-            width: 350px;
+        .profile-card {
+            width: 330px;
+            background-color: #ffffff;
             text-align: center;
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 15px;
+            margin: 60px auto;
             padding: 30px;
-            margin: 50px auto;
-            box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            border: 2px solid #c8b6e2;
+            box-shadow: 0px 5px 12px #cccccc;
         }
 
-        .profile-img {
-            width: 150px;
-            height: 150px;
+        .photo {
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid #b8dcff;
+            border: 5px solid #8e7cc3;
         }
 
         h2 {
-            font-size: 30px;
-            margin-bottom: 10px;
+            color: #4b3f72;
+            margin-bottom: 5px;
         }
 
-        .location {
-            font-size: 17px;
-            color: #666;
+        .address {
+            color: #777777;
+            font-size: 16px;
         }
 
         .tagline {
+            color: #8e7cc3;
             font-size: 12px;
-            color: #667788;
-            letter-spacing: 4px;
-            margin: 25px 0;
+            letter-spacing: 3px;
+            margin: 20px;
         }
 
         button {
+            padding: 10px 25px;
             border: none;
-            padding: 13px 30px;
-            border-radius: 10px;
-            font-size: 16px;
+            border-radius: 8px;
+            font-size: 15px;
             cursor: pointer;
         }
 
-        #showQR {
-            background-color: #087dde;
+        #showButton {
+            background-color: #8e7cc3;
             color: white;
         }
 
-        #qrSection {
-            display: none;
-            background-color: #eef7ff;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 15px;
+        #showButton:hover {
+            background-color: #6f5fa7;
         }
 
-        #qrcode {
+        #qrArea {
+            display: none;
+            background-color: #f4f0fa;
+            border: 1px solid #c8b6e2;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        #qrCode {
             display: flex;
             justify-content: center;
-            margin-bottom: 15px;
+            margin: 15px;
         }
 
-        #closeQR {
-            background-color: #566273;
+        #closeButton {
+            background-color: #555555;
             color: white;
+        }
+
+        #closeButton:hover {
+            background-color: #333333;
         }
 
     </style>
+
 </head>
 
 <body>
 
-    <div class="card">
+    <div class="profile-card">
 
-        <!-- YOUR PHOTO -->
-        <img src="profile.png.jpg" class="profile-img">
+        <img src="profile.png.jpg" class="photo">
 
         <h2>Aayusha Luitel</h2>
 
-        <p class="location">
+        <p class="address">
             📍 Baneshwor, Kathmandu
         </p>
 
@@ -104,21 +112,19 @@
             LEARN • CONNECT • GROW
         </p>
 
-        <!-- SHOW BUTTON -->
-        <button id="showQR">
-            ▦ Show QR
+        <button id="showButton">
+            Show LinkedIn QR
         </button>
 
 
-        <!-- QR SECTION -->
-        <div id="qrSection">
+        <div id="qrArea">
 
-            <div id="qrcode"></div>
+            <div id="qrCode"></div>
 
-            <p>Scan to view my LinkedIn profile</p>
+            <p>Scan to visit my LinkedIn</p>
 
-            <button id="closeQR">
-                ✕ Close QR
+            <button id="closeButton">
+                Close
             </button>
 
         </div>
@@ -130,30 +136,27 @@
 
         $(document).ready(function(){
 
-            // Create LinkedIn QR Code
-            new QRCode(document.getElementById("qrcode"), {
+            new QRCode("qrCode", {
                 text: "https://www.linkedin.com/in/aayusha-luitel-00700b326/",
-                width: 150,
-                height: 150
+                width: 140,
+                height: 140
             });
 
 
-            // Show QR
-            $("#showQR").click(function(){
+            $("#showButton").click(function(){
 
-                $("#qrSection").show();
+                $("#qrArea").fadeIn();
 
-                $("#showQR").hide();
+                $("#showButton").hide();
 
             });
 
 
-            // Close QR
-            $("#closeQR").click(function(){
+            $("#closeButton").click(function(){
 
-                $("#qrSection").hide();
+                $("#qrArea").fadeOut();
 
-                $("#showQR").show();
+                $("#showButton").show();
 
             });
 
@@ -162,4 +165,5 @@
     </script>
 
 </body>
+
 </html>
