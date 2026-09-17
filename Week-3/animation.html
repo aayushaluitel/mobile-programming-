@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Div Animation</title>
+    <link rel="stylesheet" href="animation.css">
+</head>
+
+<body>
+
+    <h2>Div Animation</h2>
+
+    <button id="start-animation">Start Animation</button>
+
+    <div id="boxArea">
+        <div id="box"></div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("#start-animation").click(function () {
+
+                // Top Left to Bottom Left
+                $("#box").animate({
+                    top: "320px"
+                }, 1000, function () {
+
+                    // Change to blue
+                    $(this).css("background-color", "blue");
+
+                    // Bottom Left to Bottom Right
+                    $(this).animate({
+                        left: "520px"
+                    }, 1000, function () {
+
+                        // Change to green
+                        $(this).css("background-color", "green");
+
+                        // Bottom Right to Top Right
+                        $(this).animate({
+                            top: "0px"
+                        }, 1000, function () {
+
+                            // Change to orange
+                            $(this).css("background-color", "orange");
+
+                            // Top Right to Top Left
+                            $(this).animate({
+                                left: "0px"
+                            }, 1000, function () {
+
+                                // Change back to red
+                                $(this).css("background-color", "red");
+
+                            });
+
+                        });
+
+                    });
+
+                });
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
